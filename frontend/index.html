@@ -315,6 +315,31 @@
             box-shadow: 0 12px 35px rgba(77, 166, 214, 0.25);
         }
 
+        .lesson-card:hover .lesson-image {
+            animation: colorShift 0.6s ease-in-out;
+        }
+
+        @keyframes colorShift {
+            0% {
+                background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            }
+            20% {
+                background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+            }
+            40% {
+                background: linear-gradient(135deg, #98FB98 0%, #00FA9A 100%);
+            }
+            60% {
+                background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            }
+            80% {
+                background: linear-gradient(135deg, #87CEEB 0%, #4DA6D6 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            }
+        }
+
         .lesson-image {
             width: 100%;
             height: 200px;
@@ -702,7 +727,7 @@
 
             <!-- Lessons Grid -->
             <div class="lessons-grid" id="lessonsGrid">
-                <!-- Math - London -->
+                <!-- Math -->
                 <div class="lesson-card">
                     <div class="lesson-image">
                         <i class="fas fa-calculator"></i>
@@ -729,13 +754,67 @@
                     </div>
                 </div>
 
-                <!-- Math - Oxford -->
+                <!-- English -->
                 <div class="lesson-card">
                     <div class="lesson-image">
-                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-pen-fancy"></i>
                     </div>
                     <div class="lesson-content">
-                        <div class="lesson-subject">Math</div>
+                        <div class="lesson-subject">English</div>
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Manchester</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-pound-sign"></i>
+                                <span>£85</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>5 spaces available</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-plus"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Physics -->
+                <div class="lesson-card">
+                    <div class="lesson-image">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-subject">Physics</div>
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Cambridge</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-pound-sign"></i>
+                                <span>£110</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>5 spaces available</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-plus"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chemistry -->
+                <div class="lesson-card">
+                    <div class="lesson-image">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-subject">Chemistry</div>
                         <div class="lesson-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -743,7 +822,7 @@
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-pound-sign"></i>
-                                <span>£100</span>
+                                <span>£110</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-chair"></i>
@@ -756,21 +835,21 @@
                     </div>
                 </div>
 
-                <!-- English - London -->
+                <!-- Biology -->
                 <div class="lesson-card">
                     <div class="lesson-image">
-                        <i class="fas fa-pen-fancy"></i>
+                        <i class="fas fa-microscope"></i>
                     </div>
                     <div class="lesson-content">
-                        <div class="lesson-subject">English</div>
+                        <div class="lesson-subject">Biology</div>
                         <div class="lesson-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>London</span>
+                                <span>Edinburgh</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-pound-sign"></i>
-                                <span>£100</span>
+                                <span>£105</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-chair"></i>
@@ -783,17 +862,71 @@
                     </div>
                 </div>
 
-                <!-- English - York -->
+                <!-- Music -->
                 <div class="lesson-card">
                     <div class="lesson-image">
-                        <i class="fas fa-pen-fancy"></i>
+                        <i class="fas fa-music"></i>
                     </div>
                     <div class="lesson-content">
-                        <div class="lesson-subject">English</div>
+                        <div class="lesson-subject">Music</div>
                         <div class="lesson-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>York</span>
+                                <span>Bristol</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-pound-sign"></i>
+                                <span>£90</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>5 spaces available</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-plus"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nutrition -->
+                <div class="lesson-card">
+                    <div class="lesson-image">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-subject">Nutrition</div>
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Leeds</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-pound-sign"></i>
+                                <span>£75</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>5 spaces available</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-plus"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Literature -->
+                <div class="lesson-card">
+                    <div class="lesson-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-subject">Literature</div>
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Glasgow</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-pound-sign"></i>
@@ -810,21 +943,48 @@
                     </div>
                 </div>
 
-                <!-- Music - Bristol -->
+                <!-- Calculus -->
                 <div class="lesson-card">
                     <div class="lesson-image">
-                        <i class="fas fa-music"></i>
+                        <i class="fas fa-square-root-alt"></i>
                     </div>
                     <div class="lesson-content">
-                        <div class="lesson-subject">Music</div>
+                        <div class="lesson-subject">Calculus</div>
                         <div class="lesson-details">
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Bristol</span>
+                                <span>Birmingham</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-pound-sign"></i>
-                                <span>£90</span>
+                                <span>£115</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>5 spaces available</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fas fa-plus"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Geography -->
+                <div class="lesson-card">
+                    <div class="lesson-image">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-subject">Geography</div>
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Liverpool</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-pound-sign"></i>
+                                <span>£95</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-chair"></i>
@@ -979,6 +1139,7 @@
         }
 
         // Initialize
+        console.log('Boilerplate ready for Vue.js integration');
     </script>
 </body>
 </html>
