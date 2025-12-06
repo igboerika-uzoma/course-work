@@ -535,12 +535,14 @@ nav a:hover::after {
   }
 }
 
+/* Main Container */
 .container {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
+/* Section Title */
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 2rem;
@@ -562,6 +564,7 @@ nav a:hover::after {
   border-radius: 2px;
 }
 
+/* Controls Section */
 .controls {
   display: flex;
   gap: 1rem;
@@ -583,6 +586,7 @@ nav a:hover::after {
   color: var(--dark-blue);
 }
 
+/* Inputs & Selects */
 input[type="text"],
 input[type="search"],
 input[type="tel"],
@@ -614,6 +618,7 @@ input[type="search"]::placeholder {
   color: #aaa;
 }
 
+/* Buttons */
 .btn {
   padding: 0.75rem 1.5rem;
   border: none;
