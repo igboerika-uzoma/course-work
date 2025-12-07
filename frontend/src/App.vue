@@ -5,7 +5,6 @@ import TheWelcome from './components/TheWelcome.vue'
 
 <template>
   <div id="app">
-    <!-- Header -->
     <header>
       <div class="header-container">
         <div class="logo">
@@ -214,6 +213,7 @@ export default {
     return {
       // View state
       currentView: 'lessons', // 'lessons' or 'cart'
+       apiURL: 'http://localhost:3000',
       
       // Lessons data
       lessons: [
@@ -396,18 +396,26 @@ export default {
           this.showLessons();
         }, 2000);
         
-        // Here you would make a POST request to your Express.js backend
-        // Example:
-        // fetch('https://your-backend-url.com/orders', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(order)
-        // })
-        // .then(response => response.json())
-        // .then(data => console.log('Order saved:', data))
-        // .catch(error => console.error('Error:', error));
+        // Server POST example commented out...
       }
-    }
+    },
+    async fetchLessons() {
+      try {
+        // ensure you have apiURL in data() or replace with a direct path
+        const response = await fetch(`${this.apiURL}/lessons`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        this.lessons = data;
+        console.log('✅ Lessons loaded:', this.lessons.length);
+      } catch (error) {
+        console.error('❌ Error fetching lessons:', error);
+        alert('Failed to load lessons. Please refresh the page.');
+      }
+    },
+
+    
   }
 };
 </script>
