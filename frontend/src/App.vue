@@ -1,5 +1,3 @@
-
-
 <template>
   <div id="app">
     <header>
@@ -52,41 +50,44 @@
         </div>
 
         <!-- Lessons Grid using v-for -->
-        <div class="lessons-grid">
-          <div 
-            v-for="lesson in filteredAndSortedLessons" 
-            :key="lesson.id" 
-            class="lesson-card"
-          >
-            <div class="lesson-image">
-              <i :class="'fas ' + lesson.icon"></i>
-            </div>
-            <div class="lesson-content">
-              <div class="lesson-subject">{{ lesson.subject }}</div>
-              <div class="lesson-details">
-                <div class="detail-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>{{ lesson.location }}</span>
-                </div>
-                <div class="detail-item">
-                  <i class="fas fa-pound-sign"></i>
-                  <span>£{{ lesson.price }}</span>
-                </div>
-                <div class="detail-item">
-                  <i class="fas fa-chair"></i>
-                  <span>{{ lesson.spaces }} space{{ lesson.spaces !== 1 ? 's' : '' }} available</span>
-                </div>
-              </div>
-              <button 
-                class="btn btn-primary btn-block" 
-                @click="addToCart(lesson.id)"
-                :disabled="lesson.spaces === 0"
-              >
-                <i class="fas fa-plus"></i> 
-                {{ lesson.spaces === 0 ? 'Sold Out' : 'Add to cart' }}
-              </button>
-            </div>
+        <div
+          v-for="lesson in filteredAndSortedLessons"
+          :key="lesson._id"
+          class="lesson-card"
+        >
+          <div class="lesson-image">
+            <i :class="['fas', lesson.icon]"></i>
           </div>
+
+          <div class="lesson-content">
+            <div class="lesson-subject">{{ lesson.topic }}</div>
+            <div class="lesson-details">
+              <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{ lesson.location }}</span>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-pound-sign"></i>
+                <span>£{{ lesson.price }}</span>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-chair"></i>
+                <span>{{ lesson.space }} space{{ lesson.space !== 1 ? 's' : '' }} available</span>
+              </div>
+            </div>
+
+            <button
+              class="btn btn-primary btn-block"
+              @click="addToCart(lesson._id)"
+              :disabled="lesson.space === 0"
+            >
+              <i class="fas fa-plus"></i>
+              {{ lesson.space === 0 ? 'Sold Out' : 'Add to cart' }}
+            </button>
+          </div>
+        </div>
 
           <!-- Empty State -->
           <div v-if="filteredAndSortedLessons.length === 0" class="empty-state">
@@ -123,20 +124,19 @@
             </div>
 
             <!-- Cart Items using v-for -->
-            <div 
-              v-for="item in cart" 
-              :key="item.id" 
-              class="cart-item"
-            >
-              <div class="cart-item-info">
-                <div class="cart-item-name">{{ item.subject }}</div>
-                <div class="cart-item-location">{{ item.location }} • Quantity: {{ item.quantity }}</div>
-              </div>
-              <div class="cart-item-price">£{{ item.price * item.quantity }}</div>
-              <button class="btn btn-danger btn-sm" @click="removeFromCart(item.id)">
-                <i class="fas fa-trash"></i>
-              </button>
+            <div
+            v-for="item in cart"
+            :key="item._id"
+            class="cart-item"
+          >
+            <div class="cart-item-info">
+              <div class="cart-item-name">{{ item.subject }}</div>
+              <div class="cart-item-location">{{ item.location }} • Quantity: {{ item.quantity }}</div>
             </div>
+            <div class="cart-item-price">£{{ (item.price * item.quantity).toFixed(2) }}</div>
+            <button class="btn btn-danger btn-sm" @click="removeFromCart(item._id)">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
 
           <div class="cart-summary">
@@ -325,16 +325,16 @@ export default {
     
     // Remove lesson from cart
     removeFromCart(lessonId) {
-      const cartItem = this.cart.find(item => item.id === lessonId);
+      const cartItem = this.cart.find(item => item._id === lessonId);
       
       if (cartItem) {
-        const lesson = this.lessons.find(l => l.id === lessonId);
+        const lesson = this.lessons.find(l => l._id === lessonId);
         
         // Restore spaces
-        lesson.spaces += cartItem.quantity;
+        lesson.space += cartItem.quantity;
         
         // Remove from cart
-        this.cart = this.cart.filter(item => item.id !== lessonId);
+        this.cart = this.cart.filter(item => item._id !== lessonId);
       }
     },
     
