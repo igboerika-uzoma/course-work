@@ -123,7 +123,6 @@
               <p>Add some lessons to get started!</p>
             </div>
 
-            <!-- Cart Items using v-for -->
             <div
             v-for="item in cart"
             :key="item._id"
@@ -214,16 +213,16 @@ export default {
       
       // Lessons data
       lessons: [
-        { id: 1, subject: 'Math', location: 'London', price: 100, spaces: 5, icon: 'fa-calculator' },
-        { id: 2, subject: 'English', location: 'Manchester', price: 85, spaces: 5, icon: 'fa-pen-fancy' },
-        { id: 3, subject: 'Physics', location: 'Cambridge', price: 110, spaces: 5, icon: 'fa-atom' },
-        { id: 4, subject: 'Chemistry', location: 'Oxford', price: 110, spaces: 5, icon: 'fa-flask' },
-        { id: 5, subject: 'Biology', location: 'Edinburgh', price: 105, spaces: 5, icon: 'fa-microscope' },
-        { id: 6, subject: 'Music', location: 'Bristol', price: 90, spaces: 5, icon: 'fa-music' },
-        { id: 7, subject: 'Nutrition', location: 'Leeds', price: 75, spaces: 5, icon: 'fa-apple-alt' },
-        { id: 8, subject: 'Literature', location: 'Glasgow', price: 80, spaces: 5, icon: 'fa-book' },
-        { id: 9, subject: 'Calculus', location: 'Birmingham', price: 115, spaces: 5, icon: 'fa-square-root-alt' },
-        { id: 10, subject: 'Geography', location: 'Liverpool', price: 95, spaces: 5, icon: 'fa-globe' }
+        // { id: 1, subject: 'Math', location: 'London', price: 100, spaces: 5, icon: 'fa-calculator' },
+        // { id: 2, subject: 'English', location: 'Manchester', price: 85, spaces: 5, icon: 'fa-pen-fancy' },
+        // { id: 3, subject: 'Physics', location: 'Cambridge', price: 110, spaces: 5, icon: 'fa-atom' },
+        // { id: 4, subject: 'Chemistry', location: 'Oxford', price: 110, spaces: 5, icon: 'fa-flask' },
+        // { id: 5, subject: 'Biology', location: 'Edinburgh', price: 105, spaces: 5, icon: 'fa-microscope' },
+        // { id: 6, subject: 'Music', location: 'Bristol', price: 90, spaces: 5, icon: 'fa-music' },
+        // { id: 7, subject: 'Nutrition', location: 'Leeds', price: 75, spaces: 5, icon: 'fa-apple-alt' },
+        // { id: 8, subject: 'Literature', location: 'Glasgow', price: 80, spaces: 5, icon: 'fa-book' },
+        // { id: 9, subject: 'Calculus', location: 'Birmingham', price: 115, spaces: 5, icon: 'fa-square-root-alt' },
+        // { id: 10, subject: 'Geography', location: 'Liverpool', price: 95, spaces: 5, icon: 'fa-globe' }
       ],
       
       // Cart
@@ -272,10 +271,10 @@ export default {
       if (this.searchTerm) {
         const search = this.searchTerm.toLowerCase();
         filtered = filtered.filter(lesson => 
-          lesson.subject.toLowerCase().includes(search) ||
+          lesson.topic.toLowerCase().includes(search) || 
           lesson.location.toLowerCase().includes(search) ||
           lesson.price.toString().includes(search) ||
-          lesson.spaces.toString().includes(search)
+          lesson.space.toString().includes(search)  
         );
       }
       
@@ -283,6 +282,11 @@ export default {
       const sorted = [...filtered].sort((a, b) => {
         let aValue = a[this.sortBy];
         let bValue = b[this.sortBy];
+
+            if (this.sortBy === 'subject') {
+          aValue = a.topic;
+          bValue = b.topic;
+        }
         
         if (typeof aValue === 'string') {
           aValue = aValue.toLowerCase();
@@ -323,17 +327,14 @@ export default {
       }
     },
     
-    // Remove lesson from cart
     removeFromCart(lessonId) {
       const cartItem = this.cart.find(item => item._id === lessonId);
       
       if (cartItem) {
         const lesson = this.lessons.find(l => l._id === lessonId);
         
-        // Restore spaces
         lesson.space += cartItem.quantity;
         
-        // Remove from cart
         this.cart = this.cart.filter(item => item._id !== lessonId);
       }
     },
