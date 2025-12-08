@@ -1,7 +1,4 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
+
 
 <template>
   <div id="app">
@@ -213,7 +210,7 @@ export default {
     return {
       // View state
       currentView: 'lessons', // 'lessons' or 'cart'
-       apiURL: 'http://localhost:3000',
+       apiURL: 'https://backend-express-app-yw9p.onrender.com',
       
       // Lessons data
       lessons: [
@@ -303,22 +300,23 @@ export default {
   
   methods: {
     addToCart(lessonId) {
-      const lesson = this.lessons.find(l => l.id === lessonId);
+       const lesson = this.lessons.find(l => l._id === lessonId);
       
-      if (lesson && lesson.spaces > 0) {
-        lesson.spaces--;
+      if (lesson && lesson.space > 0) {
+        lesson.space--;
         
-        const existingItem = this.cart.find(item => item.id === lessonId);
+         const existingItem = this.cart.find(item => item._id === lessonId);
         
         if (existingItem) {
           existingItem.quantity++;
         } else {
           // Add new item to cart
           this.cart.push({
-            id: lesson.id,
-            subject: lesson.subject,
+             _id: lesson._id,  
+            subject: lesson.topic, 
             location: lesson.location,
             price: lesson.price,
+            space: lesson.space,  
             quantity: 1
           });
         }
@@ -494,7 +492,7 @@ export default {
         this.fetchLessons();
     }
   }
-};
+  
 </script>
 
 <style>
