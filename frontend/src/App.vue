@@ -213,16 +213,16 @@ export default {
       
       // Lessons data
       lessons: [
-        // { id: 1, subject: 'Math', location: 'London', price: 100, spaces: 5, icon: 'fa-calculator' },
-        // { id: 2, subject: 'English', location: 'Manchester', price: 85, spaces: 5, icon: 'fa-pen-fancy' },
-        // { id: 3, subject: 'Physics', location: 'Cambridge', price: 110, spaces: 5, icon: 'fa-atom' },
-        // { id: 4, subject: 'Chemistry', location: 'Oxford', price: 110, spaces: 5, icon: 'fa-flask' },
-        // { id: 5, subject: 'Biology', location: 'Edinburgh', price: 105, spaces: 5, icon: 'fa-microscope' },
-        // { id: 6, subject: 'Music', location: 'Bristol', price: 90, spaces: 5, icon: 'fa-music' },
-        // { id: 7, subject: 'Nutrition', location: 'Leeds', price: 75, spaces: 5, icon: 'fa-apple-alt' },
-        // { id: 8, subject: 'Literature', location: 'Glasgow', price: 80, spaces: 5, icon: 'fa-book' },
-        // { id: 9, subject: 'Calculus', location: 'Birmingham', price: 115, spaces: 5, icon: 'fa-square-root-alt' },
-        // { id: 10, subject: 'Geography', location: 'Liverpool', price: 95, spaces: 5, icon: 'fa-globe' }
+        { _id: 1, subject: 'Math', location: 'London', price: 100, spaces: 5, icon: 'fa-calculator' },
+        { _id: 2, subject: 'English', location: 'Manchester', price: 85, spaces: 5, icon: 'fa-pen-fancy' },
+        { _id: 3, subject: 'Physics', location: 'Cambridge', price: 110, spaces: 5, icon: 'fa-atom' },
+        { _id: 4, subject: 'Chemistry', location: 'Oxford', price: 110, spaces: 5, icon: 'fa-flask' },
+        { _id: 5, subject: 'Biology', location: 'Edinburgh', price: 105, spaces: 5, icon: 'fa-microscope' },
+        { _id: 6, subject: 'Music', location: 'Bristol', price: 90, spaces: 5, icon: 'fa-music' },
+        { _id: 7, subject: 'Nutrition', location: 'Leeds', price: 75, spaces: 5, icon: 'fa-apple-alt' },
+        { _id: 8, subject: 'Literature', location: 'Glasgow', price: 80, spaces: 5, icon: 'fa-book' },
+        { _id: 9, subject: 'Calculus', location: 'Birmingham', price: 115, spaces: 5, icon: 'fa-square-root-alt' },
+        { _id: 10, subject: 'Geography', location: 'Liverpool', price: 95, spaces: 5, icon: 'fa-globe' }
       ],
       
       // Cart
