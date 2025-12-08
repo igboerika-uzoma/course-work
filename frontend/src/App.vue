@@ -415,7 +415,84 @@ export default {
       }
     },
 
-    
+    async submitOrder(name, phone) {
+            try {
+                // Prepare order data from cart
+                const lessonIDs = this.cart.map(item => item._id);
+                const numberOfSpaces = this.cart.map(item => item.quantity);
+
+                const orderData = {
+                    name: name,
+                    phone: phone,
+                    lessonIDs: lessonIDs,
+                    numberOfSpaces: numberOfSpaces
+                };
+
+                const response = await fetch(`${this.apiURL}/orders`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log('✅ Order created:', result.orderId);
+                
+                // Update lesson spaces after order
+                await this.updateLessonSpaces();
+                
+                return result;
+                
+            } catch (error) {
+                console.error('❌ Error submitting order:', error);
+                alert('Failed to submit order. Please try again.');
+                throw error;
+            }
+        },
+
+         async updateLessonSpaces() {
+            try {
+                // Update each lesson in the cart
+                const updatePromises = this.cart.map(async (item) => {
+                    const lessonId = item._id;
+                    const newSpace = item.space - item.quantity;
+
+                    const response = await fetch(`${this.apiURL}/lessons/${lessonId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ space: newSpace })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to update lesson ${lessonId}`);
+                    }
+
+                    return response.json();
+                });
+
+                await Promise.all(updatePromises);
+                console.log('✅ All lesson spaces updated');
+                
+                // Refresh lessons from database
+                await this.fetchLessons();
+                
+            } catch (error) {
+                console.error('❌ Error updating lesson spaces:', error);
+                throw error;
+            }
+        }
+    },
+
+    mounted() {
+        this.fetchLessons();
+    }
   }
 };
 </script>
