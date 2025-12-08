@@ -1,38 +1,34 @@
-# frontend
+# AfterSchool Activities
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue.js web application for browsing and booking after-school activities and lessons.
 
-## Recommended IDE Setup
+## Live Links
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Frontend (GitHub Pages):** https://igboerika-uzoma.github.io/AfterSchool-frontend/
+- **Backend API (Render):** https://afterschool-backend.onrender.com
+- **Frontend Repository:** https://github.com/igboerika-uzoma/AfterSchool-frontend
 
-## Recommended Browser Setup
+## Tech Stack
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Frontend:** Vue 3 + Vite
+- **Backend:** Express.js + MongoDB
+- **Deployment:** GitHub Pages (frontend), Render (backend)
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Build & Deploy
 
 ```sh
-npm run build
+npm run build    # Build for production
+npm run deploy   # Build and deploy to GitHub Pages
 ```
